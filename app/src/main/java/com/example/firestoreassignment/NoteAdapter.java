@@ -79,7 +79,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         }
 
     }
-
+//
     Note getItem(int id) {
         return mData.get(id);
     }
