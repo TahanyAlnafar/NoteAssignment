@@ -30,7 +30,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.user_card, parent, false);
+        View view = mInflater.inflate(R.layout.note_card, parent, false);
         return new ViewHolder(view);
     }
 
@@ -38,6 +38,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     public void onBindViewHolder(final ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 
         holder.title.setText(mData.get(position).getTitle());
+        holder.content.setText(mData.get(position).getContent());
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,14 +63,17 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView title;
+        public TextView content;
         public ImageView delete;
+
         public CardView card;
 
         ViewHolder(View itemView) {
             super(itemView);
             this.title = itemView.findViewById(R.id.title);
-            this.delete = itemView.findViewById(R.id.d);
-            this.card = itemView.findViewById(R.id.card2);
+            this.content = itemView.findViewById(R.id.content);
+            this.delete = itemView.findViewById(R.id.delete);
+            this.card = itemView.findViewById(R.id.card);
             itemView.setOnClickListener(this);
         }
 
@@ -79,7 +83,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         }
 
     }
-//
+
     Note getItem(int id) {
         return mData.get(id);
     }
